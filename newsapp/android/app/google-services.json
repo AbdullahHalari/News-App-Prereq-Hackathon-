@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "218873058544",
-    "project_id": "timeof-news",
-    "storage_bucket": "timeof-news.appspot.com"
+    "project_number": "277463076663",
+    "project_id": "time-ofnews",
+    "storage_bucket": "time-ofnews.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:218873058544:android:e5b87eda88feced5455e35",
+        "mobilesdk_app_id": "1:277463076663:android:5dc883fc95e6bc2b3554b2",
         "android_client_info": {
-          "package_name": "com.android.application"
+          "package_name": "com.example.newsapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "218873058544-6ga0o598csma649rgk8d63dvpthesbod.apps.googleusercontent.com",
+          "client_id": "277463076663-o3cq31ic6hr3ruqglbp2mtgko24a5tgn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCZcwfiQQqb7aAZcbH8zfy_v7XCt0phfzM"
+          "current_key": "AIzaSyDPc7f4ELyVBgvbJZST9Z6RMnT-UTlrfTk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "218873058544-6ga0o598csma649rgk8d63dvpthesbod.apps.googleusercontent.com",
+              "client_id": "277463076663-o3cq31ic6hr3ruqglbp2mtgko24a5tgn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
