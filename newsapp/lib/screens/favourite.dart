@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:newsapp/bottombar.dart';
 import 'package:newsapp/pages/articles_details_page.dart';
+import 'package:newsapp/screens/home.dart';
 
 class Favorites extends StatefulWidget {
   @override
@@ -20,7 +22,11 @@ class _FavoritesState extends State<Favorites> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: AppBar(
-            title: Center(child: Text("YOUR likes")),
+    //          leading: IconButton(
+    // icon: Icon(Icons.arrow_back, color: Colors.white),
+    // onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottombar())),
+  // ),
+            title: Center(child: Text("YOUR FAVORITES")),
             automaticallyImplyLeading: false,
 
             backgroundColor: Colors.black,
@@ -160,11 +166,11 @@ class _FavoritesState extends State<Favorites> {
       margin: EdgeInsets.all(12.0),
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.red[100],
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: Colors.black,
               blurRadius: 3.0,
             ),
           ]),

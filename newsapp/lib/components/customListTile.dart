@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:newsapp/check.dart';
 import 'package:newsapp/model/article_model.dart';
 import 'package:newsapp/pages/articles_details_page.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ Widget customListTile(Article article, BuildContext context) {
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: Colors.black,
               blurRadius: 3.0,
             ),
           ]),
@@ -53,6 +54,7 @@ Widget customListTile(Article article, BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            
             height: 200.0,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -64,7 +66,7 @@ Widget customListTile(Article article, BuildContext context) {
                       : NetworkImage(article.urlToImage),
                   // NetworkImage(article.urlToImage),
                   fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(5.0),
             ),
             child: Align(
               alignment: Alignment.topLeft,
@@ -102,6 +104,72 @@ Widget customListTile(Article article, BuildContext context) {
             height: 5,
           ),
           Row(children: [
+            Container(
+              height: 60,
+              width: 50,
+            child:check(article, context)),
+            // IconButton(
+            //     icon: Icon(Icons.favorite_border_outlined),
+            //     onPressed: () {
+                  
+            //     }),
+            // Container(
+            //   height: 100,
+            //   width: 10,
+            // IconButton(
+            //     icon: Icon(Icons.favorite_border_outlined),
+            //     onPressed: () {
+            //      child: FutureBuilder<FirebaseFirestore>(
+            //           // future: FirebaseAuth.instance.currentUser,
+            //           builder: (BuildContext context,
+            //               AsyncSnapshot<FirebaseFirestore> snapshot) {
+            //         if (snapshot.hasData) {
+            //           FirebaseFirestore user =
+            //               snapshot.data; // this is your user instance
+            //           /// is because there is user already logged
+            //           return StreamBuilder(
+            //             stream: FirebaseFirestore.instance
+            //                 .collection("favourite")
+            //                 .doc(FirebaseAuth.instance.currentUser.email)
+            //                 .collection("items")
+            //                 .snapshots(),
+            //             builder:
+            //                 (BuildContext context, AsyncSnapshot snapshot) {
+            //               if (snapshot.data == null) {
+            //                 return Text("");
+            //               }
+            //               return Padding(
+            //                 padding: const EdgeInsets.only(right: 8),
+            //                 child: CircleAvatar(
+            //                   backgroundColor: Colors.red,
+            //                   child: IconButton(
+            //                     onPressed: () => snapshot.data.docs.length == 0
+            //                         ? addTofav()
+            //                         : print("Already Added"),
+            //                     icon: snapshot.data.docs.length == 0
+            //                         ? Icon(
+            //                             Icons.favorite_outline,
+            //                             color: Colors.white,
+            //                           )
+            //                         : Icon(
+            //                             Icons.favorite,
+            //                             color: Colors.white,
+            //                           ),
+            //                   ),
+            //                 ),
+            //               );
+            //             },
+            //           );
+            //         }
+
+            //         /// other way there is no user logged.
+            //         return Login();
+                      
+                    
+            //       })
+            //       // print("object");
+            //     ),
+
             // StreamBuilder(
             //   stream: FirebaseFirestore.instance
             //       .collection("favorites")
@@ -134,20 +202,26 @@ Widget customListTile(Article article, BuildContext context) {
             //   },
             // ),
             SizedBox(
-              width: 150,
+              width: 120,
             ),
             Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                article.publishedAt != null
-                    ? article.publishedAt
-                    : '1 hour ago',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10.0,
-                ),
-              ),
-            ),
+                alignment: Alignment.bottomRight,
+                child: Row(children: [
+                  Icon(Icons.timer,color: Colors.grey,),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    article.publishedAt != null
+                        ? article.publishedAt
+                        : '1 hour ago',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 10.0,
+                      color:Colors.grey
+                    ),
+                  ),
+                ])),
           ])
         ],
       ),

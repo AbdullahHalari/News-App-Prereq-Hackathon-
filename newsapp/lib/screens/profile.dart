@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:newsapp/bottombar.dart';
+import 'package:newsapp/main.dart';
 import 'package:newsapp/screens/login.dart';
 import 'package:path/path.dart' as path;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -61,7 +62,8 @@ class _ProfileState extends State<Profile> {
   void signout() async {
     try {
       await FirebaseAuth.instance.signOut();
-
+Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (BuildContext context) => Bottombar()));
       print("object");
     } catch (e) {
       print(e.message);
@@ -69,8 +71,7 @@ class _ProfileState extends State<Profile> {
     // await _prefService.removeCache("password").whenComplete(() {
 
     // Navigator.of(context).pushNamed(LoginRoute);
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (BuildContext context) => Bottombar()));
+    
 
     // });
   }

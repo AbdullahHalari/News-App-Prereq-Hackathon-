@@ -1,42 +1,81 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:newsapp/bottombar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:newsapp/model/article_model.dart';
+import 'package:newsapp/screens/favourite.dart';
 import 'package:newsapp/screens/login.dart';
-import 'package:newsapp/screens/profile.dart';
+import 'package:newsapp/bottombar.dart';
 
-class Checklogin extends StatefulWidget {
-  const Checklogin({Key key}) : super(key: key);
+import 'package:flutter/cupertino.dart';
 
-  @override
-  _CheckloginState createState() => _CheckloginState();
-}
-
-class _CheckloginState extends State<Checklogin> {
-  @override
-  Widget build(BuildContext context) {
-    void check() {
-      if (FirebaseAuth.instance.currentUser == null) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Login()));
-      } else {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Profile()));
-      }
-    }
-
-    
-
-    return Scaffold(
-      body: Container(
-        child: ElevatedButton(
-            onPressed: () {
-              //
-              check();
-             
-            },
-            child: Text("login")),
-            
-      ),
-    );
+Widget check(Article article, BuildContext context) {
+  Future addTofav() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    var currentUser = _auth.currentUser;
+    CollectionReference _collectionRef =
+        FirebaseFirestore.instance.collection("favorites");
+    return _collectionRef.doc(currentUser.email).collection("items").doc().set({
+      "title": article.title,
+      "images": article.urlToImage,
+      "author": article.author,
+    }).then((value) => Fluttertoast.showToast(msg: "item added"));
   }
+
+  User user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance
+          .collection("favorites")
+          .doc(FirebaseAuth.instance.currentUser.email)
+          .collection("items")
+          .where("title", isEqualTo: article.title)
+          .snapshots(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          return Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: IconButton(
+              iconSize: 30,
+              onPressed: () => snapshot.data.docs.length == 0
+                  ? addTofav()
+                  : Fluttertoast.showToast(msg: "Already Added"),
+              icon: snapshot.data.docs.length == 0
+                  ? Icon(
+                      Icons.favorite_outline,
+                      color: Colors.black,
+                    )
+                  : Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    ),
+            ),
+          );
+        }
+        return IconButton(
+            icon: Icon(Icons.favorite_border_outlined), onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) => Login()));
+
+            });
+        // ElevatedButton(onPressed: (){
+        // }, child: Icon(Icons.favorite));
+      },
+    );
+    //signed out
+  } else {
+    return IconButton(
+            icon: Icon(Icons.favorite_border_outlined), onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) => Login()));
+
+            });
+    // ElevatedButton(
+    //     onPressed: () {
+    //       Navigator.push(context,
+    //           MaterialPageRoute(builder: (BuildContext context) => Login()));
+    //     },
+    //     child: Icon(Icons.favorite));
+  }
+  //signed in
 }
