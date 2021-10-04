@@ -120,20 +120,24 @@ class _BottombarState extends State<Bottombar> {
   @override
   Widget build(BuildContext context) {
 SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+
      return WillPopScope(
         onWillPop: () async {
-          
+         
           return false;
         },
         child: BottomBars(
       
       items: [
+              
         BottomBarsItem(
           
           page: 
           Scaffold(
             body: 
+          
             Home(),
+            
           ),
 
           item: Item(
@@ -160,6 +164,7 @@ SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
         ),
         BottomBarsItem(
           page: Scaffold(
+            
              body: userfavorite(),
           ),
           item: Item(

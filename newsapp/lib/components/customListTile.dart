@@ -18,7 +18,7 @@ Widget customListTile(Article article, BuildContext context) {
       "title": article.title,
       "images": article.urlToImage,
       "author": article.author,
-    }).then((value) => Fluttertoast.showToast(msg: "item added"));
+    }).then((value) => Fluttertoast.showToast(msg: "Article Added In favorite"));
   }
 // void check() {
 //       if (FirebaseAuth.instance.currentUser == null) {

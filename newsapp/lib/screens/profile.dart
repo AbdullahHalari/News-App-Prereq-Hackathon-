@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:newsapp/bottombar.dart';
@@ -29,6 +30,7 @@ class _ProfileState extends State<Profile> {
 
   void pickImage() async {
     final ImagePicker _picker = ImagePicker();
+    // ignore: deprecated_member_use
     final image = await _picker.getImage(source: ImageSource.gallery);
     setState(() {
       imagePath = image.path;
@@ -62,8 +64,8 @@ class _ProfileState extends State<Profile> {
   void signout() async {
     try {
       await FirebaseAuth.instance.signOut();
-Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (BuildContext context) => Bottombar()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) => Bottombar()));
       print("object");
     } catch (e) {
       print(e.message);
@@ -71,7 +73,6 @@ Navigator.pushReplacement(context,
     // await _prefService.removeCache("password").whenComplete(() {
 
     // Navigator.of(context).pushNamed(LoginRoute);
-    
 
     // });
   }
@@ -146,8 +147,9 @@ Navigator.pushReplacement(context,
                                       image: DecorationImage(
                                         image:
                                             imageurl == null || imageurl.isEmpty
-                                                ? AssetImage('images/logo.png')
-                                                : NetworkImage(imageurl),
+                                                ? AssetImage('images/wwwlogo.png')
+                                                :
+                                            NetworkImage(imageurl),
                                         fit: BoxFit.cover,
                                       )),
                                   width: 100,
@@ -306,5 +308,3 @@ Navigator.pushReplacement(context,
     );
   }
 }
-
-

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newsapp/bottombar.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:newsapp/screens/favourite.dart';
@@ -67,8 +68,10 @@ class _LoginState extends State<Login> {
     }
 
     return Scaffold(
+      
         // backgroundColor: Colors.red,
         body: Container(
+          
       // color: Colors.red[900],
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -130,6 +133,7 @@ class _LoginState extends State<Login> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextField(
+                textInputAction: TextInputAction.go,
                 style: TextStyle(color: Colors.red),
                 cursorColor: Colors.red,
                 controller: passwordController,

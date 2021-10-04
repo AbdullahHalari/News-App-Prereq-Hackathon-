@@ -2,7 +2,6 @@
 // for that we just need to copy the property from the json structure
 // and make a dart object
 import 'source_model.dart';
-
 class Article {
   Source source;
   String author;

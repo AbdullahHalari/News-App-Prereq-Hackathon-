@@ -2,11 +2,13 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newsapp/bottombar.dart';
 import 'package:newsapp/pages/articles_details_page.dart';
 import 'package:newsapp/screens/home.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Favorites extends StatefulWidget {
   @override
@@ -26,7 +28,7 @@ class _FavoritesState extends State<Favorites> {
     // icon: Icon(Icons.arrow_back, color: Colors.white),
     // onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Bottombar())),
   // ),
-            title: Center(child: Text("YOUR FAVORITES")),
+            title: Center(child: Text("Your Favorites")),
             automaticallyImplyLeading: false,
 
             backgroundColor: Colors.black,
@@ -166,7 +168,7 @@ class _FavoritesState extends State<Favorites> {
       margin: EdgeInsets.all(12.0),
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-          color: Colors.red[100],
+          color: Colors.blue[100],
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
@@ -224,6 +226,34 @@ class _FavoritesState extends State<Favorites> {
               fontSize: 20.0,
             ),
           ),
+          SizedBox(height:10),
+            RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+              
+                text: "To see more full article ",
+                style: TextStyle(
+                  color: Colors.black
+                )
+              ),
+              TextSpan(
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+                 text: "Click here",
+                  recognizer: TapGestureRecognizer()..onTap =  () async{
+                    var url = _documentSnapshot['url'] != null ? _documentSnapshot['url'] : 'Breaking News';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                  }
+              ),
+            ]
+        )),
           SizedBox(
             height: 5,
           ),
@@ -235,6 +265,7 @@ class _FavoritesState extends State<Favorites> {
                     icon: Icon(Icons.delete),
                     onPressed: () {
                       deleteitem();
+                      Fluttertoast.showToast(msg: "Article Removed In favorite");
                     })),
             SizedBox(
               width: 150,

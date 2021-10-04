@@ -19,7 +19,8 @@ Widget check(Article article, BuildContext context) {
       "title": article.title,
       "images": article.urlToImage,
       "author": article.author,
-    }).then((value) => Fluttertoast.showToast(msg: "item added"));
+      "url": article.url,
+    }).then((value) => Fluttertoast.showToast(msg: "Article Added In favorite"));
   }
 
   User user = FirebaseAuth.instance.currentUser;
@@ -54,9 +55,10 @@ Widget check(Article article, BuildContext context) {
         }
         return IconButton(
             icon: Icon(Icons.favorite_border_outlined), onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) => Login()));
-
+          // Navigator.push(context,
+          //     MaterialPageRoute(builder: (BuildContext context) => Login()));
+            var snackBar = SnackBar(content: Text('Make Sure You Are Login using profile tab'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
             });
         // ElevatedButton(onPressed: (){
         // }, child: Icon(Icons.favorite));
@@ -66,8 +68,10 @@ Widget check(Article article, BuildContext context) {
   } else {
     return IconButton(
             icon: Icon(Icons.favorite_border_outlined), onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) => Login()));
+              var snackBar = SnackBar(content: Text('Make Sure You Are Login using profile tab'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          // Navigator.push(context,
+          //     MaterialPageRoute(builder: (BuildContext context) => Login()));
 
             });
     // ElevatedButton(

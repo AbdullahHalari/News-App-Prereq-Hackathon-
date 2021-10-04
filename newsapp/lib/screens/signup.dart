@@ -145,33 +145,56 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                     ),
-                     Container(
+                    Container(
                       padding: EdgeInsets.all(10),
                       child: TextField(
                         style: TextStyle(color: Colors.red),
                         cursorColor: Colors.red,
                         controller: phoneController,
-                        obscureText: _isHidden,
                         decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.phone,
                             color: Colors.white,
                           ),
                           border: OutlineInputBorder(),
-                          
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           hoverColor: Colors.amber[800],
                           labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Mobile Number',
                           fillColor: Color.fromRGBO(255, 255, 255, 0.6),
                           filled: true,
+                          labelText: 'Mobile Number',
                         ),
                       ),
                     ),
+                    //  Container(
+                    //   padding: EdgeInsets.all(10),
+                    //   child: TextField(
+                    //     style: TextStyle(color: Colors.red),
+                    //     cursorColor: Colors.red,
+                    //     controller: phoneController,
+                    //     obscureText: _isHidden,
+                    //     decoration: InputDecoration(
+                    //       prefixIcon: Icon(
+                    //         Icons.phone,
+                    //         color: Colors.white,
+                    //       ),
+                    //       border: OutlineInputBorder(),
+                          
+                    //       focusedBorder: OutlineInputBorder(
+                    //           borderSide: BorderSide(color: Colors.black)),
+                    //       hoverColor: Colors.amber[800],
+                    //       labelStyle: TextStyle(color: Colors.white),
+                    //       labelText: 'Mobile Number',
+                    //       fillColor: Color.fromRGBO(255, 255, 255, 0.6),
+                    //       filled: true,
+                    //     ),
+                      // ),
+                    // ),
                     Container(
                       padding: EdgeInsets.all(10),
                       child: TextField(
+                        textInputAction: TextInputAction.go,
                         style: TextStyle(color: Colors.red),
                         cursorColor: Colors.red,
                         controller: passwordController,
