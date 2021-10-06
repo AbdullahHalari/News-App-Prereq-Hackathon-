@@ -168,14 +168,15 @@ class _FavoritesState extends State<Favorites> {
       margin: EdgeInsets.all(12.0),
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-          color: Colors.blue[100],
+          color: Colors.amber[100],
           // borderRadius: BorderRadius.circular(12.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              blurRadius: 3.0,
-            ),
-          ]),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.black,
+          //     blurRadius: 3.0,
+          //   ),
+          // ]
+          ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
