@@ -36,5 +36,7 @@ class Article {
       content: json['content'] as String,
     );
   }
+
+ 
 }
 

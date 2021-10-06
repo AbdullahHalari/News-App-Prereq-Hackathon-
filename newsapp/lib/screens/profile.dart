@@ -149,7 +149,8 @@ class _ProfileState extends State<Profile> {
                                             imageurl == null || imageurl.isEmpty
                                                 ? AssetImage('images/wwwlogo.png')
                                                 :
-                                            NetworkImage(imageurl),
+                                              
+                                          NetworkImage(imageurl),
                                         fit: BoxFit.cover,
                                       )),
                                   width: 100,

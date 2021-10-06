@@ -7,7 +7,6 @@ import 'package:http/http.dart';
 //Topstories 
 
 class TopstoriesApi {
-  
  final  topUrl =
       "https://newsapi.org/v2/everything?q=bitcoin&apiKey=f127e40b30d74e91a2ca7b0249ba1f27";
 
@@ -23,8 +22,8 @@ class TopstoriesApi {
 
       List<Article> articles =
           body.map((dynamic item) => Article.fromJson(item)).toList();
-
       return articles;
+    
     } else {
       throw ("Not Found");
     }
@@ -228,5 +227,7 @@ class TopstoriesApi {
     } else {
       throw ("Not Found");
     }
+    
   }
+  
 }

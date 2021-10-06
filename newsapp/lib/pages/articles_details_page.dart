@@ -124,7 +124,7 @@ class ArticlePage extends StatelessWidget {
                 ),
                 Text("Author:"),
                 Text(
-                   article.author != null ? article.author : 'No name',
+                   article.author != null ? article.author : 'Unknown',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,

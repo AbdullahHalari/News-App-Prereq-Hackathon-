@@ -37,6 +37,7 @@ dependencies:
   url_launcher: ^6.0.12
   bottom_bars: ^1.1.0
   cupertino_icons: ^1.0.2
+  flutter_native_splash: ^1.2.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

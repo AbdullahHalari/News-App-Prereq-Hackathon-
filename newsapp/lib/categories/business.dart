@@ -27,17 +27,22 @@ class _BusinessState extends State<Business> {
           if (snapshot.hasData) {
             //Now let's make a list of articles
             List<Article> articles = snapshot.data;
+            
             return ListView.builder(
               //Now let's create our custom List tile
               itemCount: articles.length,
               itemBuilder: (context, index) =>
                   customListTile(articles[index], context),
+                  
             );
+            
           }
           return Center(
             child: CircularProgressIndicator(),
           );
+          
         },
+        
       ),
     );
   }

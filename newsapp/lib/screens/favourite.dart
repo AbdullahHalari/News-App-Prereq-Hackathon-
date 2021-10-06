@@ -169,7 +169,7 @@ class _FavoritesState extends State<Favorites> {
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
           color: Colors.blue[100],
-          borderRadius: BorderRadius.circular(12.0),
+          // borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
               color: Colors.black,
@@ -192,7 +192,7 @@ class _FavoritesState extends State<Favorites> {
                       : NetworkImage(_documentSnapshot['images']),
                   // NetworkImage(article.urlToImage),
                   fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(20.0),
+              // borderRadius: BorderRadius.circular(0.0),
             ),
             // child: Align(
             //   alignment: Alignment.topLeft,
@@ -232,7 +232,7 @@ class _FavoritesState extends State<Favorites> {
             children: [
               TextSpan(
               
-                text: "To see more full article ",
+                text: "To see full article ",
                 style: TextStyle(
                   color: Colors.black
                 )
@@ -267,9 +267,9 @@ class _FavoritesState extends State<Favorites> {
                       deleteitem();
                       Fluttertoast.showToast(msg: "Article Removed In favorite");
                     })),
-            SizedBox(
-              width: 150,
-            ),
+            // SizedBox(
+            //   width: 150,
+            // ),
             // Align(
             //   alignment: Alignment.bottomRight,
             //   child: Text(

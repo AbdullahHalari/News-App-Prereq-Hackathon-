@@ -38,24 +38,24 @@ Widget customListTile(Article article, BuildContext context) {
                   )));
     },
     child: Container(
-      margin: EdgeInsets.all(12.0),
+      // margin: EdgeInsets.all(12.0),
       padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              blurRadius: 3.0,
-            ),
-          ]),
+      // decoration: BoxDecoration(
+      //     color: Colors.white,
+      //     // borderRadius: BorderRadius.circular(.0),
+      //     boxShadow: [
+      //       BoxShadow(
+      //         color: Colors.black,
+      //         blurRadius: 3.0,
+      //       ),
+      //     ]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             
-            height: 200.0,
+            height: 160.0,
             width: double.infinity,
             decoration: BoxDecoration(
               //let's add the height
@@ -65,7 +65,7 @@ Widget customListTile(Article article, BuildContext context) {
                       ? AssetImage('images/back1.jpg')
                       : NetworkImage(article.urlToImage),
                   // NetworkImage(article.urlToImage),
-                  fit: BoxFit.cover),
+                  fit: BoxFit.fill),
               borderRadius: BorderRadius.circular(5.0),
             ),
             child: Align(
@@ -222,9 +222,13 @@ Widget customListTile(Article article, BuildContext context) {
                     ),
                   ),
                 ])),
-          ])
+          ]),
+          Divider(
+            thickness: 3,
+          )
         ],
       ),
     ),
+    
   );
 }

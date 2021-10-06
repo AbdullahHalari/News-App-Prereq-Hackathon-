@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newsapp/categories/topstories.dart';
 
 import 'package:newsapp/model/article_model.dart';
+import 'package:newsapp/services/api_service.dart';
+
 class Search extends StatefulWidget {
   const Search({Key key}) : super(key: key);
 
@@ -14,67 +17,66 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-               preferredSize:Size.fromHeight(40),
-        child: 
-      AppBar(
-        backgroundColor: Colors.black,
-        title: Center(child:Text("Search News")),
-       ) 
-      ),
+          preferredSize: Size.fromHeight(40),
+          child: AppBar(
+            backgroundColor: Colors.black,
+            title: Center(child: Text("Search News")),
+          )),
       body: Container(
-      child: Column(
-        children: [
-         Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  // width: 100,
-                  height: 40,
-                  child: TextField(
-                      // onTap: () {
-                      //   // showSearch(context: context, delegate: DataSearch());
-                      // },
-                      onSubmitted: (submittedText) {
-                        showSearch(context: context, delegate: DataSearch());
-                      },
-                      decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.grey[300],
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.black38,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.black, width: 1),
-                              borderRadius: BorderRadius.circular(25)),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 1),
-                              borderRadius: BorderRadius.circular(30)),
-                          labelText: 'Seach')),
-                ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Center(
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                        primary: Colors.red[900],
+                        padding: EdgeInsets.fromLTRB(100, 20, 100, 20)),
+                    onPressed: () {
+                      showSearch(context: context, delegate: DataSearch());
+                    },
+                    child: Text("Search")),
               ),
-        ],
+            )
+          ],
+        ),
       ),
-    ),
     );
   }
 }
+
 class DataSearch extends SearchDelegate<String> {
-  final cities = [
-    "dfghfd",
-    "Zinger Burger",
-    "Pepperoni Pizza",
-    "hello",
-    "fgdg",
-    "Dfgdfgd",
-    "dfgfdg",
-    "tyry",
-    "yerty",
+  final news = [
+    "AMC theaters will accept cryptocurrencies beyond Bitcoin",
+    "Twitter will let users send and receive Bitcoin tips",
+    "Hitting the Books: How Bitcoin is somehow worth more than the paper it's printed on",
+    "Bitcoin protests in El Salvador against cryptocurrency as legal tender",
+    "Twitter will allow people to tip their favorite content creators with bitcoin",
+    "Bitcoin Bros and Nuclear Bros Have Found Common Cause",
+    "Bitcoin drops below 43,000 on El Salvador's first day using it",
+    "Tesla CEO Elon Musk says U.S. government should avoid regulating crypto",
+    "Old coal plant is now mining bitcoin for a utility company",
+    "JPMorgan CEO Says Bitcoin Has No Intrinsic Value After Claiming That Its Price Could Rise 10X",
+    "As Debt Ceiling Vote Looms, Democrats Reconsider Filibuster - The New York Times",
+    "Boris Johnson Pledges Transformed Economy for U.K. - The New York Times",
+    "Get Up reacts to the Cowboys releasing Jaylon Smith - ESPN",
+    "L.A. poised to enact one of nation’s strictest COVID vaccine mandates - KTLA Los Angeles",
+    "Nintendo Switch - OLED Model Review - IGN",
+    "Start 'Em, Sit 'Em Fantasy Football Week 5: Running Backs - Fades, Sleepers, Matchups, DFS Bargains - Sports Illustrated",
+    "Michigan, Purdue headline official unofficial Big Ten basketball media poll, plus my picks for 2021-22 - The Athletic",
+    "Adidas is making Xbox sneakers - The Verge",
+    "Nintendo Switch - OLED Model Review - IGN",
   ];
+
   final recent = [
-    "Dfgdfgd",
-    "dfgfdg",
+    "AMC theaters will accept cryptocurrencies beyond Bitcoin",
+    "Twitter will let users send and receive Bitcoin tips",
+    "Hitting the Books: How Bitcoin is somehow worth more than the paper it's printed on",
+    "Bitcoin protests in El Salvador against cryptocurrency as legal tender",
+    "Twitter will allow people to tip their favorite content creators with bitcoin",
   ];
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -101,9 +103,7 @@ class DataSearch extends SearchDelegate<String> {
   Widget buildResults(BuildContext context) {
     return Container(
       child: Column(
-        children: [
- 
-        ],
+        children: [],
       ),
     );
   }
@@ -112,13 +112,14 @@ class DataSearch extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     final suggest = query.isEmpty
         ? recent
-        : cities.where((p) => p.startsWith(query)).toList();
+        : news.where((p) => p.startsWith(query)).toList();
     return ListView.builder(
       itemBuilder: (contex, index) => ListTile(
         onTap: () {
           showResults(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>Topstories()));
         },
-        leading: Icon(Icons.location_city),
+        leading: Icon(Icons.search),
         title: RichText(
           text: TextSpan(
               text: suggest[index].substring(0, query.length),
