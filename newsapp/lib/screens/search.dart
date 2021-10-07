@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/categories/topstories.dart';
 
-import 'package:newsapp/model/article_model.dart';
-import 'package:newsapp/services/api_service.dart';
 
 class Search extends StatefulWidget {
   const Search({Key key}) : super(key: key);

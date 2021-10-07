@@ -3,10 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newsapp/model/article_model.dart';
-import 'package:newsapp/screens/favourite.dart';
-import 'package:newsapp/screens/login.dart';
-import 'package:newsapp/bottombar.dart';
-
 import 'package:flutter/cupertino.dart';
 
 Widget check(Article article, BuildContext context) {
@@ -55,31 +51,21 @@ Widget check(Article article, BuildContext context) {
         }
         return IconButton(
             icon: Icon(Icons.favorite_border_outlined), onPressed: () {
-          // Navigator.push(context,
-          //     MaterialPageRoute(builder: (BuildContext context) => Login()));
-            var snackBar = SnackBar(content: Text('Make Sure You Are Login using profile tab'));
+        
+            var snackBar = SnackBar(content: Text('Please first Login using profile tab'));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
             });
-        // ElevatedButton(onPressed: (){
-        // }, child: Icon(Icons.favorite));
+        
       },
     );
-    //signed out
   } else {
     return IconButton(
             icon: Icon(Icons.favorite_border_outlined), onPressed: () {
-              var snackBar = SnackBar(content: Text('Make Sure You Are Login using profile tab'));
+              var snackBar = SnackBar(content: Text('Please first Login using profile tab'));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          // Navigator.push(context,
-          //     MaterialPageRoute(builder: (BuildContext context) => Login()));
+        
 
             });
-    // ElevatedButton(
-    //     onPressed: () {
-    //       Navigator.push(context,
-    //           MaterialPageRoute(builder: (BuildContext context) => Login()));
-    //     },
-    //     child: Icon(Icons.favorite));
+    
   }
-  //signed in
 }

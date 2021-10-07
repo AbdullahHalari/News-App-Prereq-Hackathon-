@@ -1,9 +1,6 @@
-//Now let's create the article details page
-import 'package:newsapp/screens/home.dart';
 import 'package:flutter/gestures.dart';
 import 'package:newsapp/model/article_model.dart';
 import 'package:flutter/material.dart';
-import 'package:newsapp/screens/home.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ArticlePage extends StatelessWidget {
@@ -34,14 +31,11 @@ class ArticlePage extends StatelessWidget {
                   height: 200.0,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    //let's add the height
-
                     image: DecorationImage(
                         image: (article.urlToImage == null)
                       ? AssetImage('images/back1.jpg')
                       : NetworkImage(article.urlToImage),
                         fit: BoxFit.cover),
-                    // borderRadius: BorderRadius.circular(12.0),
                   ),
                 ),
                 SizedBox(
@@ -49,10 +43,7 @@ class ArticlePage extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.all(6.0),
-                  // decoration: BoxDecoration(
-                  //   color: Colors.black,
-                  //   borderRadius: BorderRadius.circular(30.0),
-                  // ),
+               
                   child: Text(
                     article.source.name != null ? article.source.name : 'No source',
                     style: TextStyle(

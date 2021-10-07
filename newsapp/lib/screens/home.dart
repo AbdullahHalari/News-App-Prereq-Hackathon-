@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:newsapp/screens/login.dart';
-// import 'package:newsapp/screens/signup.dart';
 import 'package:newsapp/categories/topstories.dart';
 import 'package:newsapp/categories/technology.dart';
 import 'package:newsapp/categories/health.dart';
@@ -31,22 +29,9 @@ class _HomeState extends State<Home> {
             child: AppBar(  
             flexibleSpace: Container(
               height: 40,
-              // width: 30,
-    // decoration: 
-    //   BoxDecoration(
-    //     image: DecorationImage(
-        
-    //       image: AssetImage("images/logo.png",
-    //       ),
-          
-    //       fit: BoxFit.fitWidth,
-    //     ),
-        
-    //   ),
     child: Image.asset("images/logo.png",width: 30,),
   ),
             backgroundColor: Colors.red[900],
-            // title: Text('Flutter Tabs Demo'),  
             bottom: TabBar(  
               isScrollable: true,
               labelColor: Colors.black,

@@ -2,17 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newsapp/bottombar.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:newsapp/screens/favourite.dart';
-import 'package:newsapp/screens/profile.dart';
 import 'package:newsapp/screens/signup.dart';
-// import 'package:newsapp/screens/signup.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
-  // const Login({ Key? key }) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -46,12 +40,9 @@ class _LoginState extends State<Login> {
         snapshot.data();
         this.setState(() {
           loggedIn = true;
-          // Navigator.push(context,
-          //     MaterialPageRoute(builder: (BuildContext context) => Bottombar()));
         });
         Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) => Bottombar()));
-        // Navigator.of(context).pop();
         print("user is logged in");
       } catch (e) {
         print("error");
@@ -62,17 +53,14 @@ class _LoginState extends State<Login> {
                 content: Text(e.toString()),
               );
             });
-        //     Navigator.push(context,
-        // MaterialPageRoute(builder: (BuildContext context) => Bottombar()));
+        
       }
     }
 
     return Scaffold(
       
-        // backgroundColor: Colors.red,
         body: Container(
           
-      // color: Colors.red[900],
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage("images/back3.jpg"),
@@ -92,7 +80,6 @@ class _LoginState extends State<Login> {
             ),
             Container(
                 alignment: Alignment.center,
-                // padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: Text(
                   'Welcome back!',
                   style: TextStyle(
@@ -112,9 +99,7 @@ class _LoginState extends State<Login> {
                     color: Colors.white,
                   ),
                   border: OutlineInputBorder(
-                      // borderSide: BorderSide(color: (Colors.black)),
-                      // borderRadius: BorderRadius.circular(25)
-
+                      
                       ),
 
                   focusedBorder: OutlineInputBorder(
@@ -122,7 +107,6 @@ class _LoginState extends State<Login> {
                       borderRadius: BorderRadius.circular(25)),
                   fillColor: Color.fromRGBO(255, 255, 255, 0.6),
                   filled: true,
-                  // fillColor: Colors.white,
                   hoverColor: Colors.amber[800],
                   labelStyle: TextStyle(color: Colors.white),
 
@@ -143,8 +127,6 @@ class _LoginState extends State<Login> {
                     Icons.vpn_key,
                     color: Colors.white,
                   ),
-                  // border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
-                  //     borderSide: BorderSide(color: (Colors.black))),
                   suffix: InkWell(
                     onTap: _togglePasswordView,
                     child: Icon(
@@ -175,17 +157,13 @@ class _LoginState extends State<Login> {
                   ),
                   onPressed: login,
 
-                  // () {
-                  //   print(emailController.text);
-                  //   print(passwordController);
-                  // },
+                 
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: Text("Login"),
                   )),
             ),
             Container(
-                // height: 50,
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Column(
                   children: [

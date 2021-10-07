@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:newsapp/bottombar.dart';
-import 'package:newsapp/main.dart';
-import 'package:newsapp/screens/login.dart';
 
 class Signup extends StatefulWidget {
-  // const Signup({ Key? key }) : super(key: key);
 
   @override
   _SignupState createState() => _SignupState();
@@ -54,9 +50,7 @@ class _SignupState extends State<Signup> {
     }
 
     return Scaffold(
-        // backgroundColor: Colors.blue,
         body: Container(
-          // color: Colors.red[900],
             constraints: BoxConstraints.expand(),
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -69,8 +63,7 @@ class _SignupState extends State<Signup> {
                 child: ListView(
                   children: <Widget>[
                     Container(
-                      // child: Image.asset('images/logohm.png',
-                          // width: 100, height: 150),
+                      
                     ),
                     Container(
                         alignment: Alignment.center,
@@ -167,30 +160,6 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                     ),
-                    //  Container(
-                    //   padding: EdgeInsets.all(10),
-                    //   child: TextField(
-                    //     style: TextStyle(color: Colors.red),
-                    //     cursorColor: Colors.red,
-                    //     controller: phoneController,
-                    //     obscureText: _isHidden,
-                    //     decoration: InputDecoration(
-                    //       prefixIcon: Icon(
-                    //         Icons.phone,
-                    //         color: Colors.white,
-                    //       ),
-                    //       border: OutlineInputBorder(),
-                          
-                    //       focusedBorder: OutlineInputBorder(
-                    //           borderSide: BorderSide(color: Colors.black)),
-                    //       hoverColor: Colors.amber[800],
-                    //       labelStyle: TextStyle(color: Colors.white),
-                    //       labelText: 'Mobile Number',
-                    //       fillColor: Color.fromRGBO(255, 255, 255, 0.6),
-                    //       filled: true,
-                    //     ),
-                      // ),
-                    // ),
                     Container(
                       padding: EdgeInsets.all(10),
                       child: TextField(
@@ -226,15 +195,11 @@ class _SignupState extends State<Signup> {
                     ),
                    
                     Container(
-                        // height: 50,
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               primary: Colors.black,
-                              // padding: EdgeInsets.fromLTRB(100, 0, 100, 0)
                             ),
-                            // textColor: Colors.black,
-                            // color: Colors.red,
                             child: Text('Sign up'),
                             onPressed: register)),
                    
